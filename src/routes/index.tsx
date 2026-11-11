@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Facebook, Heart, MessageCircle, Palette, PartyPopper, Sparkles, X } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { collection, images, nav, orderHref, site, testimonials } from "@/data/site";
@@ -54,7 +54,7 @@ function Index() {
           </div>
           <div className="relative mx-auto flex min-h-[100svh] max-w-7xl items-center px-6 pb-16 pt-28">
             <div className="max-w-xl">
-              <img src={logo.url} alt="" className="mb-8 h-28 w-28 object-contain" />
+              <img src={logo} alt="" className="mb-8 h-28 w-28 object-contain" />
               <p className="eyebrow">{site.tagline}</p>
               <h1 className="mt-5 text-5xl leading-[1.05] text-ivory sm:text-6xl lg:text-7xl">
                 Every Celebration Deserves a <em className="text-champagne">Dream Cake.</em>
@@ -228,7 +228,7 @@ function Index() {
 
         {/* CTA */}
         <section id="contact" className="relative overflow-hidden bg-ink py-32 text-center">
-          <img src={logo.url} alt="" aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-[0.06]" />
+          <img src={logo} alt="" aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-[0.06]" />
           <Reveal className="relative mx-auto max-w-2xl px-6">
             <p className="eyebrow">Begin Your Order</p>
             <h2 className="mt-5 text-5xl text-ivory sm:text-6xl">Let's Make Your Dream Cake.</h2>
@@ -244,7 +244,7 @@ function Index() {
       <footer className="border-t border-gold/15 bg-ink text-ivory/70">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-3">
           <div>
-            <img src={logo.url} alt={`${site.name} logo`} className="h-24 w-24 object-contain" />
+            <img src={logo} alt={`${site.name} logo`} className="h-24 w-24 object-contain" />
             <p className="mt-3 font-script text-2xl text-champagne">{site.tagline}</p>
           </div>
           <nav aria-label="Footer">

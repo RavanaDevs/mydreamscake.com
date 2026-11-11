@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { nav, orderHref, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ export function Nav() {
       scrolled || open ? "bg-ink/90 backdrop-blur-md border-b border-gold/15" : "bg-transparent")}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-6">
         <a href="#home" className="flex shrink-0 items-center" aria-label={site.name}>
-          <img src={logo.url} alt={`${site.name} logo`} className="h-14 w-14 object-contain" />
+          <img src={logo} alt={`${site.name} logo`} className="h-14 w-14 object-contain" />
         </a>
         <nav aria-label="Main" className="hidden items-center gap-9 md:flex">
           {nav.map((n) => (
