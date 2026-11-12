@@ -1,21 +1,75 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Facebook, Heart, MessageCircle, Palette, PartyPopper, Sparkles, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
-import { collection, images, nav, orderHref, site, testimonials } from "@/data/site";
+import { collection, imageAlt, images, nav, orderHref, site, testimonials } from "@/data/site";
+
+const pageUrl = `${site.url}/`;
+const shareTitle = `${site.name} — Custom Cakes for Every Celebration`;
+const shareDescription =
+  "Beautifully crafted birthday, wedding and custom cakes, made with love for your most special moments.";
+// Social preview image (1200×630). Social apps cache it per URL — if you replace the file,
+// rename it (or add ?v=2) so WhatsApp/Facebook fetch the new one.
+const shareImage = {
+  url: `${site.url}/og-image.jpg`,
+  width: "1200",
+  height: "630",
+  alt: `${site.name} — ${site.tagline}`,
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      slogan: site.tagline,
+      description: site.description,
+      url: pageUrl,
+      logo: { "@type": "ImageObject", url: `${site.url}/icon-512.png`, width: 512, height: 512 },
+      image: shareImage.url,
+      sameAs: [site.facebook],
+      ...(site.phone ? { telephone: site.phone } : {}),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      url: pageUrl,
+      inLanguage: "en",
+      publisher: { "@id": `${site.url}/#organization` },
+    },
+  ],
+};
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "My Dreams Cake — Every Celebration Deserves a Dream Cake" },
-      { name: "description", content: "Beautifully crafted cakes for birthdays, weddings and every special moment. Your Dream Cake Awaits." },
-      { property: "og:title", content: "My Dreams Cake — Your Dream Cake Awaits" },
-      { property: "og:description", content: "Beautifully crafted cakes to make your most special moments unforgettable." },
+      { title: `${site.name} — Custom Birthday & Wedding Cakes` },
+      { name: "description", content: site.description },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: site.name },
+      { property: "og:url", content: pageUrl },
+      { property: "og:title", content: shareTitle },
+      { property: "og:description", content: shareDescription },
+      { property: "og:image", content: shareImage.url },
+      { property: "og:image:secure_url", content: shareImage.url },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: shareImage.width },
+      { property: "og:image:height", content: shareImage.height },
+      { property: "og:image:alt", content: shareImage.alt },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: shareTitle },
+      { name: "twitter:description", content: shareDescription },
+      { name: "twitter:image", content: shareImage.url },
+      { name: "twitter:image:alt", content: shareImage.alt },
+      { "script:ld+json": structuredData },
     ],
+    links: [{ rel: "canonical", href: pageUrl }],
   }),
   component: Index,
 });
@@ -36,8 +90,9 @@ function Heading({ eyebrow, title, sub, light }: { eyebrow: string; title: strin
 }
 
 function Index() {
-  const [lightbox, setLightbox] = useState<string | null>(null);
-  const gallery = [images.hero, images.birthday, images.chocolate, images.wedding, images.chocolate, images.birthday];
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+  const galleryKeys = ["hero", "birthday", "chocolate", "wedding", "chocolate", "birthday"] as const;
+  const gallery = galleryKeys.map((k) => ({ src: images[k], alt: imageAlt[k] }));
   return (
     <div className="bg-background">
       <Nav />
@@ -47,20 +102,20 @@ function Index() {
           <div className="absolute inset-0 grid lg:grid-cols-2">
             <div className="hidden lg:block" />
             <div className="relative overflow-hidden">
-              <img src={images.hero} alt="Three-tier ivory cake with gold leaf and fresh roses" width={1280} height={1600}
+              <img src={images.hero} alt={imageAlt.hero} width={1280} height={1600} fetchPriority="high"
                 className="animate-slow-zoom h-full w-full object-cover opacity-60 lg:opacity-100" />
               <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/40 to-transparent" />
             </div>
           </div>
           <div className="relative mx-auto flex min-h-[100svh] max-w-7xl items-center px-6 pb-16 pt-28">
             <div className="max-w-xl">
-              <img src={logo} alt="" className="mb-8 h-28 w-28 object-contain" />
+              <img src={logo} alt={site.name} width={384} height={384} className="mb-8 h-28 w-28 object-contain" />
               <p className="eyebrow">{site.tagline}</p>
               <h1 className="mt-5 text-5xl leading-[1.05] text-ivory sm:text-6xl lg:text-7xl">
                 Every Celebration Deserves a <em className="text-champagne">Dream Cake.</em>
               </h1>
               <p className="mt-6 max-w-md text-lg font-light leading-relaxed text-ivory/75">
-                Beautifully crafted cakes to make your most special moments unforgettable.
+                Beautifully crafted birthday, wedding and custom cakes to make your most special moments unforgettable.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a href="#cakes" className={btnGold}>Explore Our Cakes <ArrowRight className="h-4 w-4" /></a>
@@ -73,7 +128,7 @@ function Index() {
         {/* About */}
         <section id="about" className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-28 lg:grid-cols-2 lg:py-36">
           <Reveal className="relative">
-            <img src={images.wedding} alt="Ivory two-tier cake with sugar roses and pearls" width={1024} height={1280} loading="lazy"
+            <img src={images.wedding} alt={imageAlt.wedding} width={1024} height={1280} loading="lazy"
               className="aspect-[4/5] w-full object-cover shadow-2xl" />
             <div className="absolute -bottom-6 -right-6 -z-10 hidden h-full w-full border border-gold/40 sm:block" />
           </Reveal>
@@ -96,9 +151,9 @@ function Index() {
             <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {collection.map((c, i) => (
                 <Reveal key={c.name} delay={i * 100}>
-                  <button onClick={() => setLightbox(c.img)} className="group block w-full text-left">
+                  <button onClick={() => setLightbox({ src: c.img, alt: c.alt })} className="group block w-full text-left">
                     <div className="overflow-hidden">
-                      <img src={c.img} alt={c.name} width={1024} height={1280} loading="lazy"
+                      <img src={c.img} alt={c.alt} width={1024} height={1280} loading="lazy"
                         className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105" />
                     </div>
                     <h3 className="mt-5 text-2xl text-charcoal">{c.name}</h3>
@@ -120,16 +175,19 @@ function Index() {
             <div className="mt-16 grid gap-6 lg:grid-cols-3">
               <Reveal className="lg:col-span-2">
                 <figure className="group overflow-hidden">
-                  <img src={images.chocolate} alt="Chocolate drip cake with gold macarons and berries" loading="lazy"
+                  <img src={images.chocolate} alt={imageAlt.chocolate} width={1024} height={1280} loading="lazy"
                     className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105" />
                   <figcaption className="mt-4 font-display text-xl italic text-champagne">Chocolate, berries & gold</figcaption>
                 </figure>
               </Reveal>
               <div className="grid gap-6">
-                {[{ src: images.wedding, cap: "Pearls & sugar roses" }, { src: images.birthday, cap: "A rainbow birthday" }].map((f, i) => (
+                {[
+                  { src: images.wedding, alt: imageAlt.wedding, cap: "Pearls & sugar roses" },
+                  { src: images.birthday, alt: imageAlt.birthday, cap: "A rainbow birthday" },
+                ].map((f, i) => (
                   <Reveal key={f.cap} delay={150 + i * 100}>
                     <figure className="group overflow-hidden">
-                      <img src={f.src} alt={f.cap} loading="lazy" className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-105" />
+                      <img src={f.src} alt={f.alt} width={1024} height={1280} loading="lazy" className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-105" />
                       <figcaption className="mt-3 font-display text-lg italic text-champagne">{f.cap}</figcaption>
                     </figure>
                   </Reveal>
@@ -214,8 +272,8 @@ function Index() {
               sub="Discover more of our creations and get inspired by the moments we help make special." />
             <div className="mt-16 columns-2 gap-4 md:columns-3">
               {gallery.map((g, i) => (
-                <button key={i} onClick={() => setLightbox(g)} className="group mb-4 block w-full overflow-hidden" aria-label="Open image">
-                  <img src={g} alt="Cake from the gallery" loading="lazy"
+                <button key={i} onClick={() => setLightbox(g)} className="group mb-4 block w-full overflow-hidden" aria-label={`Enlarge photo: ${g.alt}`}>
+                  <img src={g.src} alt={g.alt} width={1024} height={1280} loading="lazy"
                     className={`w-full object-cover transition duration-700 group-hover:scale-105 ${i % 3 === 0 ? "aspect-[3/4]" : "aspect-square"}`} />
                 </button>
               ))}
@@ -228,7 +286,7 @@ function Index() {
 
         {/* CTA */}
         <section id="contact" className="relative overflow-hidden bg-ink py-32 text-center">
-          <img src={logo} alt="" aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-[0.06]" />
+          <img src={logo} alt="" aria-hidden width={384} height={384} loading="lazy" className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 opacity-[0.06]" />
           <Reveal className="relative mx-auto max-w-2xl px-6">
             <p className="eyebrow">Begin Your Order</p>
             <h2 className="mt-5 text-5xl text-ivory sm:text-6xl">Let's Make Your Dream Cake.</h2>
@@ -244,7 +302,7 @@ function Index() {
       <footer className="border-t border-gold/15 bg-ink text-ivory/70">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-3">
           <div>
-            <img src={logo} alt={`${site.name} logo`} className="h-24 w-24 object-contain" />
+            <img src={logo} alt={`${site.name} logo`} width={384} height={384} loading="lazy" className="h-24 w-24 object-contain" />
             <p className="mt-3 font-script text-2xl text-champagne">{site.tagline}</p>
           </div>
           <nav aria-label="Footer">
@@ -274,7 +332,7 @@ function Index() {
       {lightbox && (
         <div role="dialog" aria-modal className="fixed inset-0 z-[60] grid place-items-center bg-ink/95 p-6" onClick={() => setLightbox(null)}>
           <button className="absolute right-6 top-6 text-ivory" aria-label="Close"><X className="h-7 w-7" /></button>
-          <img src={lightbox} alt="Cake enlarged" className="max-h-[85vh] max-w-full object-contain" />
+          <img src={lightbox.src} alt={lightbox.alt} className="max-h-[85vh] max-w-full object-contain" />
         </div>
       )}
     </div>
