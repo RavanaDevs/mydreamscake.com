@@ -1,9 +1,8 @@
-import { FacebookIcon } from "@/components/icons/facebook-icon";
-import { ExternalLink } from "@/components/ui/external-link";
 import { Logo } from "@/components/ui/logo";
-import { orderLink, site } from "@/config/site";
+import { site } from "@/config/site";
 import { navItems } from "@/content/home";
 
+import { ContactList } from "./contact-list";
 import { CurrentYear } from "./current-year";
 
 export function SiteFooter() {
@@ -30,33 +29,7 @@ export function SiteFooter() {
 
         <div className="text-sm">
           <p className="mb-4 eyebrow">Contact</p>
-          <ul className="space-y-2">
-            {site.phone && (
-              <li>
-                Phone:{" "}
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-champagne">
-                  {site.phone}
-                </a>
-              </li>
-            )}
-            {site.whatsapp && (
-              <li>
-                <ExternalLink href={orderLink.href} className="hover:text-champagne">
-                  WhatsApp
-                </ExternalLink>
-              </li>
-            )}
-            {site.location && <li>{site.location}</li>}
-            {site.hours && <li>{site.hours}</li>}
-            <li>
-              <ExternalLink
-                href={site.facebook}
-                className="inline-flex items-center gap-2 hover:text-champagne"
-              >
-                <FacebookIcon className="size-4" /> facebook.com/mydreamscakeshop
-              </ExternalLink>
-            </li>
-          </ul>
+          <ContactList />
         </div>
       </div>
 

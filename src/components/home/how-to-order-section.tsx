@@ -1,5 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -31,7 +32,12 @@ export function HowToOrderSection() {
 
         <div className="mt-14 text-center">
           <ButtonLink href={orderLink.href} external variant="dark">
-            <MessageCircle className="size-4" /> {orderLink.channelLabel}
+            {orderLink.channel === "whatsapp" ? (
+              <WhatsAppIcon className="size-4" />
+            ) : (
+              <MessageCircle className="size-4" />
+            )}{" "}
+            {orderLink.channelLabel}
           </ButtonLink>
         </div>
       </div>

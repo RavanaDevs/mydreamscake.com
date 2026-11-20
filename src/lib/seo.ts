@@ -38,8 +38,16 @@ export function homeStructuredData() {
         logo: { "@type": "ImageObject", url: `${site.url}/icon-512.png`, width: 512, height: 512 },
         image: shareImage.absoluteUrl,
         sameAs: [site.facebook],
-        ...(site.phone && { telephone: site.phone }),
-        ...(site.location && { address: site.location }),
+        ...(site.phone && { telephone: site.phone.replace(/\s/g, "") }),
+        ...(site.address.locality && {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: site.address.locality,
+            addressLocality: site.address.city,
+            addressCountry: site.address.countryCode,
+          },
+        }),
+        ...(site.mapsUrl && { hasMap: site.mapsUrl }),
         ...(site.hours && { openingHours: site.hours }),
       },
       {

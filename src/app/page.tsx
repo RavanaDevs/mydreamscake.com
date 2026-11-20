@@ -9,7 +9,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import { HowToOrderSection } from "@/components/home/how-to-order-section";
 import { ReasonsSection } from "@/components/home/reasons-section";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
-import { FloatingOrderButton } from "@/components/layout/floating-order-button";
+import { FloatingWhatsAppButton } from "@/components/layout/floating-whatsapp-button";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { LightboxProvider } from "@/components/lightbox/lightbox-provider";
@@ -71,7 +71,7 @@ export default function HomePage() {
         <ContactSection />
       </main>
       <SiteFooter />
-      <FloatingOrderButton />
+      <FloatingWhatsAppButton />
       <RevealObserver />
     </LightboxProvider>
   );
