@@ -5,8 +5,11 @@ import { Picture } from "@/components/ui/picture";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { collection } from "@/content/home";
+import { lightboxPhoto } from "@/lib/images";
 
 export function CollectionSection() {
+  const photos = collection.map((item) => lightboxPhoto(item.image, item.alt));
+
   return (
     <section id="cakes" className="bg-card py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6">
@@ -20,7 +23,7 @@ export function CollectionSection() {
           {collection.map((item, index) => (
             <Reveal as="li" key={item.name} delay={index * 100}>
               <LightboxTrigger
-                photos={collection}
+                photos={photos}
                 index={index}
                 className="group block w-full text-left"
               >

@@ -1,22 +1,29 @@
 import type { MetadataRoute } from "next";
 
 import { site } from "@/config/site";
-import { galleryPhotos } from "@/content/home";
-import { images } from "@/generated/images";
-import { shareImage } from "@/lib/seo";
+import { galleryCakes } from "@/content/gallery";
+import { homeWorkPhotos } from "@/content/home";
+import { absoluteImageUrl } from "@/lib/images";
+import { galleryShareImage, shareImage } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
+/** Pages plus their photos (image sitemap), so Google Images can find every cake. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Unique cake photos, so Google Images can find them.
-  const photos = [...new Set(galleryPhotos.map((photo) => photo.image))].map(
-    (name) => `${site.url}${images[name].src}`,
-  );
-
   return [
     {
       url: `${site.url}/`,
-      images: [shareImage.absoluteUrl, ...photos],
+      images: [
+        `${site.url}${shareImage.url}`,
+        ...homeWorkPhotos.map((photo) => absoluteImageUrl(photo.image)),
+      ],
+    },
+    {
+      url: `${site.url}/gallery`,
+      images: [
+        `${site.url}${galleryShareImage.url}`,
+        ...galleryCakes.flatMap((cake) => cake.photos.map(absoluteImageUrl)),
+      ],
     },
   ];
 }

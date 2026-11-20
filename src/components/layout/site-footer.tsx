@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 import { Logo } from "@/components/ui/logo";
+import { navItems } from "@/config/navigation";
 import { site } from "@/config/site";
-import { navItems } from "@/content/home";
 
 import { ContactList } from "./contact-list";
 import { CurrentYear } from "./current-year";
@@ -19,9 +21,9 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="hover:text-champagne">
+                <Link href={item.href} className="hover:text-champagne">
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -3,11 +3,12 @@
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useRef, type KeyboardEvent, type MouseEvent } from "react";
 
-import { Picture } from "@/components/ui/picture";
-import type { Photo } from "@/content/home";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
+
+import type { LightboxPhoto } from "./types";
 
 type LightboxDialogProps = {
-  photos: readonly Photo[];
+  photos: readonly LightboxPhoto[];
   index: number;
   onNavigate: (index: number) => void;
   onClose: () => void;
@@ -68,8 +69,8 @@ export function LightboxDialog({ photos, index, onNavigate, onClose }: LightboxD
       </button>
 
       <figure className="flex flex-col items-center">
-        <Picture
-          key={`${photo.image}-${index}`}
+        <ResponsiveImage
+          key={photo.image.src}
           image={photo.image}
           alt={photo.alt}
           sizes="100vw"
@@ -78,7 +79,7 @@ export function LightboxDialog({ photos, index, onNavigate, onClose }: LightboxD
           className="h-auto max-h-[80vh] w-auto max-w-full object-contain"
         />
         <figcaption className="mt-4 max-w-xl text-center font-display text-lg text-champagne italic">
-          {photo.alt}
+          {photo.caption ?? photo.alt}
           {hasMany && (
             <span className="mt-1 block font-sans text-xs tracking-[0.2em] text-ivory/50 not-italic">
               {index + 1} / {photos.length}

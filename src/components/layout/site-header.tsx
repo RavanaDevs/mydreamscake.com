@@ -1,20 +1,30 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { ButtonLink } from "@/components/ui/button-link";
-import { Logo } from "@/components/ui/logo";
+import { isCurrentPage, navItems } from "@/config/navigation";
 import { orderLink, site } from "@/config/site";
-import { navItems } from "@/content/home";
 import { useScrolledPast } from "@/hooks/use-scrolled-past";
 import { cn } from "@/lib/cn";
 
 import { MobileNav } from "./mobile-nav";
 
-/** Fixed top bar: transparent over the hero, solid once the page scrolls or the menu opens. */
-export function SiteHeader() {
+type SiteHeaderProps = {
+  /**
+   * The logo, rendered on the server and passed in, so the image manifest it reads
+   * never ships to the browser with this client component.
+   */
+  logo: ReactNode;
+};
+
+/** Fixed top bar: transparent over dark page tops, solid once the page scrolls or the menu opens. */
+export function SiteHeader({ logo }: SiteHeaderProps) {
   const scrolled = useScrolledPast(40);
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -34,20 +44,31 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-6">
-        <a href="#home" className="flex shrink-0 items-center" aria-label={`${site.name} — home`}>
-          <Logo size={56} alt="" priority />
-        </a>
+        <Link
+          href="/#home"
+          className="flex shrink-0 items-center"
+          aria-label={`${site.name} — home`}
+        >
+          {logo}
+        </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-9 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm tracking-wide text-ivory/80 transition-colors hover:text-champagne"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const current = isCurrentPage(item, pathname);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={current ? "page" : undefined}
+                className={cn(
+                  "text-sm tracking-wide transition-colors hover:text-champagne",
+                  current ? "text-champagne" : "text-ivory/80",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -67,7 +88,9 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {menuOpen && <MobileNav id="mobile-nav" onNavigate={() => setMenuOpen(false)} />}
+      {menuOpen && (
+        <MobileNav id="mobile-nav" pathname={pathname} onNavigate={() => setMenuOpen(false)} />
+      )}
     </header>
   );
 }

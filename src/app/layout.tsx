@@ -29,7 +29,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={fontVariables}>
+    // data-scroll-behavior: smooth-scroll for in-page links, instant jumps between pages.
+    <html lang="en" className={fontVariables} data-scroll-behavior="smooth">
       <head>
         {/* Scroll-reveal content starts hidden; show it when JavaScript is unavailable. */}
         <noscript>

@@ -2,13 +2,13 @@
 
 import type { ComponentProps } from "react";
 
-import type { Photo } from "@/content/home";
+import type { LightboxPhoto } from "./types";
 
 import { useLightbox } from "./lightbox-provider";
 
 type LightboxTriggerProps = Omit<ComponentProps<"button">, "onClick" | "type"> & {
   /** The set of photos the viewer can browse through. */
-  photos: readonly Photo[];
+  photos: readonly LightboxPhoto[];
   /** Which photo to open first. */
   index: number;
 };

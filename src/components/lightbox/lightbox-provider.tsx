@@ -2,17 +2,19 @@
 
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 
-import type { Photo } from "@/content/home";
+import type { LightboxPhoto } from "./types";
 
 import { LightboxDialog } from "./lightbox-dialog";
 
-type OpenLightbox = (photos: readonly Photo[], index: number) => void;
+type OpenLightbox = (photos: readonly LightboxPhoto[], index: number) => void;
 
 const LightboxContext = createContext<OpenLightbox | null>(null);
 
 /** Holds the one lightbox for the page. Wrap the content that contains <LightboxTrigger>s. */
 export function LightboxProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<{ photos: readonly Photo[]; index: number } | null>(null);
+  const [state, setState] = useState<{ photos: readonly LightboxPhoto[]; index: number } | null>(
+    null,
+  );
 
   const open = useCallback<OpenLightbox>((photos, index) => setState({ photos, index }), []);
   const close = useCallback(() => setState(null), []);

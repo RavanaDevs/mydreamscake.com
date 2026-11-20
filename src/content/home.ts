@@ -2,13 +2,11 @@ import { Heart, Palette, PartyPopper, Sparkles, type LucideIcon } from "lucide-r
 
 import type { ImageName } from "@/generated/images";
 
-/** Any image from src/assets/images/ except the logo. */
-export type PhotoName = Exclude<ImageName, "logo">;
-export type Photo = { image: PhotoName; alt: string };
+/** A photo plus its description (alt text for search engines and screen readers). */
+export type Photo = { image: ImageName; alt: string };
 
-// Sample photos: replace the files in src/assets/images/ with the shop's real cakes,
-// and keep each description below in sync with what the photo actually shows
-// (used as alt text by search engines and screen readers).
+// Styled photos for the hero, Our Story and Collection sections
+// (src/assets/images/*.jpg). Keep each description in sync with what the photo shows.
 export const photos = {
   hero: { image: "cake-hero", alt: "Three-tier ivory cake with gold leaf and fresh roses" },
   birthday: {
@@ -25,13 +23,50 @@ export const photos = {
   },
 } as const satisfies Record<string, Photo>;
 
-export const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Our Cakes", href: "#cakes" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "About Us", href: "#about" },
-  { label: "Contact", href: "#contact" },
-] as const;
+// The shop's own cakes, without watermark (src/assets/images/landing/, imported with
+// `npm run photos:import`). The watermarked set is used on the gallery page.
+const work = {
+  dragonRainbow: {
+    image: "landing/dragon-rainbow",
+    alt: "White cake with baby dragons, a fairytale castle, a gold-crowned number 4 and a layered rainbow",
+  },
+  lionAndRoses: {
+    image: "landing/lion-and-roses",
+    alt: "Half pink, half black cake with a butterfly and a pink rose on one side and a painted golden lion on the other",
+  },
+  pinkButterfly: {
+    image: "landing/pink-butterfly",
+    alt: "Pink and white cake with a large hand-painted pink butterfly and a gold Happy Birthday topper",
+  },
+  kittyBows: {
+    image: "landing/kitty-bows",
+    alt: "Pink and cream cake with cartoon kitty toppers, pink bows, hearts and a number 3",
+  },
+  gym: {
+    image: "landing/gym-cake",
+    alt: "Black and gold gym bag cake with fondant dumbbells, a gym mat and a muscle silhouette topper",
+  },
+  chocolateShards: {
+    image: "landing/chocolate-shards",
+    alt: "Chocolate drip cake topped with milk chocolate shards and a gold Happy Birthday topper",
+  },
+  teddy: {
+    image: "landing/teddy-first-birthday",
+    alt: "Blue and white first birthday cake with stars, balloons, a number 1 and a teddy bear",
+  },
+  pinkMarble: {
+    image: "landing/pink-marble-flowers",
+    alt: "Pink marbled buttercream cake with a posy of baby's breath, pearls and pink spheres",
+  },
+  hairBow: {
+    image: "landing/hair-bow",
+    alt: "White cake with a painted girl's long brown hair tied with a pink bow, surrounded by pink butterflies",
+  },
+  navyGoldHearts: {
+    image: "landing/navy-gold-hearts",
+    alt: "Cream ribbed cake with a navy blue border, gold spheres, navy hearts and a gold Happy Birthday topper",
+  },
+} as const satisfies Record<string, Photo>;
 
 export const collection: readonly (Photo & { name: string; description: string })[] = [
   {
@@ -56,13 +91,11 @@ export const collection: readonly (Photo & { name: string; description: string }
   },
 ];
 
-export const featured = {
-  main: { ...photos.chocolate, caption: "Chocolate, berries & gold" },
-  side: [
-    { ...photos.wedding, caption: "Pearls & sugar roses" },
-    { ...photos.birthday, caption: "A rainbow birthday" },
-  ],
-} as const;
+export const featured: readonly (Photo & { caption: string })[] = [
+  { ...work.dragonRainbow, caption: "Dragons, castles & rainbows" },
+  { ...work.lionAndRoses, caption: "Half lion, half roses" },
+  { ...work.pinkButterfly, caption: "Painted butterflies in pink" },
+];
 
 export const reasons: readonly { icon: LucideIcon; title: string; description: string }[] = [
   {
@@ -83,6 +116,9 @@ export const reasons: readonly { icon: LucideIcon; title: string; description: s
   { icon: Heart, title: "Made with Love", description: "Care and attention in every detail." },
 ];
 
+/** Shown beside the ordering steps. */
+export const orderPhoto: Photo = work.navyGoldHearts;
+
 export const orderSteps = [
   { title: "Explore", description: "Browse cake designs and find inspiration." },
   {
@@ -96,14 +132,22 @@ export const orderSteps = [
   },
 ] as const;
 
-/** Add only genuine customer reviews. While empty, the section links to Facebook reviews. */
+/**
+ * Genuine customer reviews only (from Facebook, WhatsApp…). The "Kind Words" section stays
+ * hidden while this list is empty. Example:
+ *   { quote: "The cake was beautiful and tasted amazing!", name: "Nadeesha", source: "Facebook" }
+ */
 export const testimonials: readonly { quote: string; name?: string; source?: string }[] = [];
 
-export const galleryPhotos: readonly Photo[] = [
-  photos.hero,
-  photos.birthday,
-  photos.chocolate,
-  photos.wedding,
-  photos.chocolate,
-  photos.birthday,
+/** Preview of recent work in the home page gallery section. */
+export const galleryPreview: readonly Photo[] = [
+  work.kittyBows,
+  work.gym,
+  work.chocolateShards,
+  work.teddy,
+  work.pinkMarble,
+  work.hairBow,
 ];
+
+/** Every real-work photo on the home page, for the sitemap. */
+export const homeWorkPhotos: readonly Photo[] = Object.values(work);
