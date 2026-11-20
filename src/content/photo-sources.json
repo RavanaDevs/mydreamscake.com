@@ -1,0 +1,204 @@
+{
+  "$comment": "Maps the original photos in real_images/ (not in git) to the WebP originals in src/assets/images/. Run `npm run photos:import` after editing.",
+  "gallery": {
+    "butterfly-three-tier": [
+      "with watermark/PNG/03A9DB7B-9919-4EEC-9FD5-11F7D2A60418.png",
+      "with watermark/PNG/0D6E8FC5-4A99-44F5-A05F-5CE0B2354BE2.png"
+    ],
+    "fairy-wings": [
+      "with watermark/PNG/393EDE4C-AA55-4C8E-8BBF-5004E0DCD196.png",
+      "with watermark/PNG/F43140F4-7A9F-4A17-9989-D15AAFCCACA6.png",
+      "with watermark/PNG/4AA4072C-A2F7-4D88-89C7-3A7E977DEA17.png"
+    ],
+    "black-and-gold": [
+      "with watermark/PNG/1CA689C8-DB06-4917-A847-6AFA9225A7AB.png",
+      "with watermark/PNG/A4D2279F-1E64-4054-B876-D6F96DC4CA3F.png",
+      "with watermark/PNG/9F962C68-216A-4E27-9FE0-21E6E6177E7D 2.png"
+    ],
+    "engagement-rings": [
+      "with watermark/PNG/D89E2D24-7A6C-4DC2-9BAA-6B64ACDBB6EF.png",
+      "with watermark/PNG/F0D33BC7-1D5D-4A15-9B4D-A7608D954FC0 2.png"
+    ],
+    "doll-princess": [
+      "with watermark/PNG/F62955AC-AF6D-41E9-AE4E-B02D00AA5270.png",
+      "with watermark/PNG/F6ABC6F1-3190-4666-9BEB-64756FACCB7F.png",
+      "with watermark/PNG/160859AC-955C-4396-BA48-D1E965E36284.png"
+    ],
+    "cat-and-mouse": [
+      "with watermark/PNG/530B11CA-DD0C-4624-BCC0-1B3F09FB966C_SnapseedCopy.png",
+      "with watermark/PNG/A681182D-565F-40F1-B6F1-A70DC812507B.png"
+    ],
+    "dads-hand": [
+      "with watermark/PNG/BCC02BD3-451D-444A-A65C-F4D81ADE0F8D_SnapseedCopy.png",
+      "with watermark/PNG/IMG_8155.png",
+      "with watermark/PNG/IMG_8156.png",
+      "with watermark/PNG/B452D8D7-6D4F-46F2-8547-DC47C12B8571.png"
+    ],
+    "rose-sheet-cake": [
+      "with watermark/PNG/5F4F2C71-50E4-443B-903C-C18D5CED9BC5_SnapseedCopy.png",
+      "with watermark/PNG/244F2333-D27E-4AD7-8C0F-E635F891FA91.png"
+    ],
+    "teddy-balloons": [
+      "with watermark/PNG/F756616C-A649-4068-A00B-572F81059F95.png",
+      "with watermark/PNG/7C27BBC7-AA09-4563-AF4F-00989F3DB60F.png",
+      "with watermark/PNG/C8302F0E-318E-4A39-93FA-F4CA02045E0A.png"
+    ],
+    "crown-and-roses": [
+      "with watermark/PNG/8506C1AD-45A1-4647-8B4D-9858E0D05BD1.png",
+      "with watermark/PNG/F226A5EB-1723-4DD7-ADFB-94480A16F0FF.png"
+    ],
+    "construction-twins": [
+      "with watermark/PNG/DDA7DD50-D28C-4AD2-BD50-F75F37E6B4AB.png",
+      "with watermark/PNG/F3383F43-1F06-431B-A1A8-A0C5FA41265F 2.png"
+    ],
+    "princess-gown": [
+      "with watermark/PNG/675A7AA4-A0E7-41D8-91EC-F619B10B7649.png",
+      "with watermark/PNG/96290213-AEBE-4FDE-B878-713E1F466581.png",
+      "with watermark/PNG/CC0F1206-193D-471C-A6C2-196841ED8885.png"
+    ],
+    "desert-racer": [
+      "with watermark/PNG/36BFD7FE-1CAC-4F5A-B6E3-CF782A3F6672.png",
+      "with watermark/PNG/DAB57A40-B28D-45C9-816A-697272F2BAD3.png"
+    ],
+    "king-dad": [
+      "with watermark/PNG/298FF0B2-2ACB-45C6-B5E9-AE4D2314116E.png",
+      "with watermark/PNG/76D4ABB8-57B7-4F8B-905B-7C1D899A6714.png",
+      "with watermark/PNG/7DB488C4-1FA6-4490-9B35-24298F61F976.png"
+    ],
+    "cricket-pitch": [
+      "with watermark/PNG/431F0523-5A78-462B-B8A5-AA72226C4DED.png",
+      "with watermark/PNG/5BC0FF06-9735-4D2B-9231-C8EAF663E2F1.png",
+      "with watermark/PNG/C8DAB450-91B6-4CAA-9B23-E14A1FEA1FBE.png",
+      "with watermark/PNG/8309883D-8771-4AF8-BB18-DE943712E901.png"
+    ],
+    "best-friends": [
+      "with watermark/PNG/49BAEFD0-D1C8-482B-8B9C-382DC05E1388.png",
+      "with watermark/PNG/6A13D2F0-D4E0-4A8C-A56A-CC7DCFA097C2.png",
+      "with watermark/PNG/BB5DC3F5-AF3C-4BD5-8723-D03779B37950.png"
+    ],
+    "bunny-two-tier": [
+      "with watermark/PNG/56885F7F-F125-4112-BDFB-F28DAC803D16.png",
+      "with watermark/PNG/DFBBFBAC-F075-44F1-8416-590A55525BB6.png",
+      "with watermark/PNG/E1333F07-1F16-418C-96B6-AB6DB63D14C7.png"
+    ],
+    "pink-balloon-setup": [
+      "with watermark/PNG/3489516E-937D-44C9-BC46-3B0F36C490D8.png",
+      "with watermark/PNG/8A3B5581-9CCC-42D5-94EF-D5D08F11781B.png"
+    ],
+    "chocolate-cherries": [
+      "with watermark/PNG/BA9E78D7-7ECC-4AD9-BB8C-E5DA389181B6_SnapseedCopy.png",
+      "with watermark/PNG/C2A2D309-74A5-4BC4-A394-7DECDC804AD3.png"
+    ],
+    "cherry-blossom": [
+      "with watermark/PNG/B6FB0D1B-6A32-4571-AA11-758BB0ED5788_SnapseedCopy.png",
+      "with watermark/PNG/3C894F39-C7B6-408C-ABF7-7155D0CB26B4.png"
+    ],
+    "best-teacher": [
+      "with watermark/PNG/3B708E01-18B6-4AB8-BF29-E44E6ABF7BF4_SnapseedCopy.png",
+      "with watermark/PNG/8CBC8DA3-DDD8-4FB3-82CC-E82FA6E5A280 2.png",
+      "with watermark/PNG/F1880118-44F4-49DC-9732-5C0DDE821D42 2.png"
+    ],
+    "navy-my-love": [
+      "with watermark/PNG/4B44F9FA-F7C7-48C8-9B72-00F96EE60D62.png",
+      "with watermark/PNG/ABFE297D-7F2A-49CA-86B1-86FB7F8945A5.png",
+      "with watermark/PNG/EDB0736C-68A7-4EE0-ABD5-A7C6122A5602.png"
+    ],
+    "green-car": [
+      "with watermark/PNG/37CEDF44-9A32-487F-84D0-D8304F43FF69.png",
+      "with watermark/PNG/97870B25-CDFC-4A36-83DC-C3790F205F90.png",
+      "with watermark/PNG/E603BFCF-53F9-45D9-AFE1-51587F1C4B53.png"
+    ],
+    "floral-ring": [
+      "with watermark/PNG/2575172C-F77B-45CF-8516-EE71AEE4C65C.png",
+      "with watermark/PNG/59615DB4-F5CE-4CAF-A52B-2C75AA9B96DB.png",
+      "with watermark/PNG/F37F852F-5835-4881-A1AA-CF56952992C0.png"
+    ],
+    "dad-monogram": [
+      "with watermark/PNG/3E056B0A-0E0A-4B5A-89B2-A9AE684E476C.png",
+      "with watermark/PNG/6FF9C6D4-DFA1-4886-A88C-1808D730DA2E.png"
+    ],
+    "football-unicorn": [
+      "with watermark/PNG/4B827F37-EEC2-4EA8-B02D-2BD5246F2ECD.png",
+      "with watermark/PNG/9F56F48D-9B25-4EAA-A820-DF505B46DA66.png"
+    ],
+    "school-letters": [
+      "with watermark/PNG/4B22DA78-B8B7-4F4E-B344-FE11CB92AAD8.png",
+      "with watermark/PNG/FE1A098D-BBAB-4D67-80A6-1C55ACAFE025.png"
+    ],
+    "chocolate-rose": [
+      "with watermark/PNG/5A1366EB-043A-43B2-B175-1919195F5DEC.png",
+      "with watermark/PNG/8573FBE5-15F4-452C-B400-E4B68E7BA609.png"
+    ],
+    "pink-rosettes": [
+      "with watermark/PNG/274C660C-D47F-4406-A602-1A9EFC5B313D.png",
+      "with watermark/PNG/3CDB1829-9F74-4846-BD6B-478249040353.png"
+    ],
+    "race-car-blue": [
+      "with watermark/PNG/7343371D-F978-4692-9D48-006E7D3420A4.png",
+      "with watermark/PNG/D6B2578C-6B51-4380-BD34-27DE5C4FCAA6.png",
+      "with watermark/PNG/BD78430A-3EE3-4092-83FA-946AD4DA6A26.png"
+    ],
+    "hearts-couple": [
+      "with watermark/PNG/3ED80FE9-E9B6-4A4D-8EB9-B73FBFAED12F.png",
+      "with watermark/PNG/D210C564-2986-4845-8B3E-05C81D2A769F.png"
+    ],
+    "pink-drip-butterflies": [
+      "with watermark/PNG/886F663A-0F94-479D-B2E7-2B52B22F3E19.png",
+      "with watermark/PNG/A3554CC6-826A-482C-8FA7-17A151823AE8.png"
+    ],
+    "navy-gold-split": [
+      "with watermark/PNG/7D57D82B-B17C-403E-9E33-36D5D5626722.png",
+      "with watermark/PNG/E193092B-2ADA-46C6-8F5A-053E7D304A0E.png"
+    ],
+    "lovely-hearts": [
+      "with watermark/PNG/78F08381-14B7-4D3E-BEB8-6D5A550C9FFC_SnapseedCopy.png",
+      "with watermark/PNG/B4EAB405-74CC-4A72-9CDC-1C5D45CB6B08.png"
+    ],
+    "cake-gift-bouquet": ["with watermark/PNG/0E99F4D4-5B03-43BF-8287-BC616070FFDA.png"],
+    "pink-ruffle-dress": [
+      "with watermark/PNG/C9307AF8-65FC-4013-AA28-4B5486597425.png",
+      "with watermark/PNG/F239C923-D006-446F-A676-6DAD13A372CA.png"
+    ],
+    "yellow-ombre": [
+      "with watermark/PNG/2E2D4941-CB68-4312-81DD-70EC0BE606C4.png",
+      "with watermark/PNG/7B45C3F0-99E8-4379-8153-232AB61F5745.png"
+    ],
+    "good-luck-princess": [
+      "with watermark/PNG/2CE82413-8F0E-4C6B-99CE-FFBA1A40934C.png",
+      "with watermark/PNG/9B8047F4-0F1F-4475-9FA5-FA7FB49840B6.png"
+    ],
+    "chocolate-drip": [
+      "with watermark/PNG/62EAA030-CBE5-433C-8820-2BEABF18A2B5.png",
+      "with watermark/PNG/81784DDE-262B-42F5-9FCD-A74D968459F4.png"
+    ],
+    "pink-navy-split": [
+      "with watermark/PNG/3DA3BD35-FB38-48D2-A7FC-69B92CDEEDB5.png",
+      "with watermark/PNG/F8DD0CF2-7A35-41C1-8060-4A49F0D3B471_SnapseedCopy.png"
+    ],
+    "bow-cake": [
+      "with watermark/PNG/344A34A5-5D23-4FA7-BD3E-A8AE05DE1D7D.png",
+      "with watermark/PNG/DABF9FC6-B0F1-4DC6-8EC1-A0CDF267A91E.png"
+    ],
+    "blue-balloon-setup": ["with watermark/PNG/5B83BB48-73E5-4B33-93FD-35803150116B.png"],
+    "blue-roses": [
+      "with watermark/PNG/C3FB20B1-89F9-4DA0-A85B-E09CF117F3EF.png",
+      "with watermark/PNG/FF8F4B65-72DA-4DFA-9844-1503121504DC.png"
+    ],
+    "racing-boy": [
+      "with watermark/PNG/309E9244-3C56-4D3F-B573-45816341D378.png",
+      "with watermark/PNG/6923393A-40A6-4C59-987F-BF2328436A66.png"
+    ]
+  },
+  "landing": {
+    "dragon-rainbow": "without watermark/PNG/FB73D4AE-99F4-46A1-9266-348085958126 2.png",
+    "lion-and-roses": "without watermark/PNG/D4CE5BF4-8913-4AE3-B20D-47C49E12E28B.png",
+    "pink-butterfly": "without watermark/PNG/8A1458B3-BBFC-4D9D-94D5-28C05E66A6C5.png",
+    "kitty-bows": "without watermark/PNG/B61BFCC0-B653-425A-A90D-538F3E615AFB.png",
+    "gym-cake": "without watermark/PNG/E1E6DD4E-6386-4351-80C1-1D4C7E834873.png",
+    "chocolate-shards": "without watermark/PNG/E068BEF4-20B7-4173-8288-92665F101660.png",
+    "teddy-first-birthday": "without watermark/PNG/CC7B0DD2-CEB9-461D-B2BD-7956B3B5540F.png",
+    "pink-marble-flowers": "without watermark/PNG/FC576135-951F-4034-8BD4-DDAA15304BF0.png",
+    "hair-bow": "without watermark/PNG/D3F1C67F-3113-459D-99A0-4EF47027335D.png",
+    "navy-gold-hearts": "without watermark/PNG/29C0DD57-DC78-463C-A699-F1050B459F53 2.png"
+  }
+}
