@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------------------------------
+ * Design tokens. Every colour here becomes a utility (bg-gold, text-ink, border-champagne/50…)
+ * and a CSS variable (--color-gold).
+ * ---------------------------------------------------------------------------------------- */
+@theme {
+  --color-ink: oklch(0.12 0 0);
+  --color-charcoal: oklch(0.19 0.008 80);
+  --color-gold: oklch(0.76 0.13 88);
+  --color-champagne: oklch(0.86 0.09 88);
+  --color-ivory: oklch(0.975 0.01 85);
+
+  --color-background: var(--color-ivory);
+  --color-foreground: var(--color-charcoal);
+  --color-card: oklch(1 0 0);
+  --color-muted: oklch(0.94 0.012 85);
+  --color-muted-foreground: oklch(0.58 0.01 80);
+
+  --animate-slow-zoom: slow-zoom 2.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes slow-zoom {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Font families come from next/font (see src/lib/fonts.ts), exposed as CSS variables. */
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-script: var(--font-great-vibes), cursive;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Keep the page from scrolling behind the open lightbox. */
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-champagne);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+@utility gold-rule {
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* Scroll-reveal: <Reveal> renders .reveal, <RevealObserver> adds .is-visible on scroll.
+ * Content stays visible without JavaScript thanks to the <noscript> rule in the root layout. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
